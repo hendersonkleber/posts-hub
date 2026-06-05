@@ -155,6 +155,9 @@ http://localhost:4200
 - [ ] CRUD de Comentários
 - [ ] Curtidas
 - [ ] Paginação
+
+### Versão 2
+
 - [ ] Upload de imagens
 - [ ] Seguir usuários
 - [ ] Feed personalizado
