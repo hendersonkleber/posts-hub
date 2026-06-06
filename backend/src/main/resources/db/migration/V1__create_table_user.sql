@@ -1,0 +1,10 @@
+CREATE TABLE tb_user(
+    id UUID PRIMARY KEY,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    name VARCHAR(200) NOT NULL,
+    email VARCHAR(200) NOT NULL UNIQUE,
+    password VARCHAR(200) NOT NULL
+);
+
+CREATE INDEX idx_user_email ON tb_user(email);

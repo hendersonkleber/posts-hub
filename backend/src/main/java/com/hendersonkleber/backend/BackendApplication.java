@@ -1,13 +1,13 @@
-package com.hendersonkleber.posts_api;
+package com.hendersonkleber.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PostsApiApplication {
+public class BackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PostsApiApplication.class, args);
+		SpringApplication.run(BackendApplication.class, args);
 	}
 
 }

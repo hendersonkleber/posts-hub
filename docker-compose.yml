@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: postshubdb
+      POSTGRES_USER: postshub
+      POSTGRES_PASSWORD: postshub
+    volumes:
+      - db-data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+volumes:
+  db-data:
