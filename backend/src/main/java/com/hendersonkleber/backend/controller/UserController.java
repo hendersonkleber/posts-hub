@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "/me")
-public class ProfileController {
+@RequestMapping(path = "/user")
+public class UserController {
     private final UserService userService;
 
-    public ProfileController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping(path = "/me")
     public ResponseEntity<UserResponse> me(@AuthenticationPrincipal Jwt jwt) {
         var id = UUID.fromString(jwt.getSubject());
         var response = this.userService.findById(id);
