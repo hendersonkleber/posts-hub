@@ -1,0 +1,7 @@
+@if (messages().length > 0) {
+  <div class="text-red-500 text-sm ml-1 pl-0 list-inside">
+    @for (message of messages(); track message) {
+      <p class="m-0">{{ message }}</p>
+    }
+  </div>
+}

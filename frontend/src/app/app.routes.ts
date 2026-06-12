@@ -1,21 +1,23 @@
 import { Routes } from '@angular/router';
+import { isAuthenticateGuard } from './features/auth/guards/is-authenticate-guard';
 
 export const routes: Routes = [
   {
     path: 'auth',
-    loadComponent: () => import('@app/core/layout/auth/auth.layout').then(c => c.AuthLayout),
-    children: [
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', loadComponent: () => import('@app/features/auth/pages/login/login.page').then(c => c.LoginPage) },
-      { path: 'register', loadComponent: () => import('@app/features/auth/pages/register/register.page').then(c => c.RegisterPage) }
-    ]
+    loadComponent: () => import('@app/core/layout/auth-layout/auth-layout').then(c => c.AuthLayout),
+    children: [{ path: '', loadChildren: () => import('@app/features/auth/auth.routes') }],
   },
   {
     path: '',
-    loadComponent: () => import('@app/core/layout/main/main.layout').then(c => c.MainLayout),
-    // canActivate: () => inject(AuthState).authenticate,
+    canActivate: [isAuthenticateGuard],
+    loadComponent: () => import('@app/core/layout/main-layout/main-layout').then(c => c.MainLayout),
     children: [
-      // { path: '', loadComponent: () => import('@/features/post').then(c => c.) },
-    ]
-  }
+      {
+        path: '',
+        loadComponent: () =>
+          import('@app/features/home/pages/home-page/home-page').then(c => c.HomePage),
+      },
+    ],
+  },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
